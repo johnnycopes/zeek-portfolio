@@ -1,0 +1,41 @@
+.footer {
+  background-color: var(--color-bark);
+  color: var(--color-stone);
+  padding: 32px 24px;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.copyright {
+  font-size: 14px;
+}
+
+.social {
+  display: flex;
+  gap: 24px;
+}
+
+.social a {
+  font-size: 14px;
+  color: var(--color-stone);
+  text-transform: capitalize;
+  transition: color 200ms ease;
+}
+
+.social a:hover {
+  color: var(--color-cream);
+}
+
+@media (max-width: 768px) {
+  .inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}

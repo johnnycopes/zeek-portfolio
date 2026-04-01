@@ -1,0 +1,29 @@
+.main {
+  padding-top: 64px; /* nav height */
+  cursor: none;
+}
+
+.inner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--section-padding-desktop) 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inner h1 {
+  font-size: 36px;
+}
+
+.intro {
+  color: var(--color-earth);
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    padding: var(--section-padding-mobile) 24px;
+  }
+}

@@ -1,0 +1,27 @@
+.card {
+  background-color: var(--color-sand);
+  border-radius: 4px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.number {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  color: var(--color-stone);
+  line-height: 1;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--color-bark);
+}
+
+.description {
+  font-size: 15px;
+  color: var(--color-earth);
+  line-height: 1.6;
+}

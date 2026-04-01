@@ -1,142 +1,131 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
+/* Hero */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 500px;
   display: flex;
-  flex: 1;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  background-color: var(--color-bark);
+  overflow: hidden;
 }
 
-.main {
+.heroBg {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(26, 23, 20, 0.5);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
   display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  align-items: center;
+  gap: 20px;
+  padding: 0 24px;
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+.heroTitle {
+  font-size: clamp(48px, 8vw, 80px);
+  color: var(--color-cream);
+  letter-spacing: 0.04em;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+.heroTagline {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--color-sand);
+  max-width: 480px;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
+.heroCta {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 32px;
+  border: 1px solid var(--color-cream);
+  color: var(--color-cream);
   font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background-color 200ms ease, color 200ms ease;
 }
 
-.ctas a {
+.heroCta:hover {
+  background-color: var(--color-cream);
+  color: var(--color-bark);
+}
+
+/* Recent work preview */
+.preview {
+  padding: var(--section-padding-desktop) 24px;
+}
+
+.previewInner {
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  flex-direction: column;
+  gap: 32px;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
+.previewGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.previewItem {
+  display: block;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
+.previewImageWrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  overflow: hidden;
+}
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+.previewImage {
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.previewItem:hover .previewImage {
+  transform: scale(1.03);
+}
+
+.viewAll {
+  align-self: flex-end;
+  font-size: 15px;
+  color: var(--color-earth);
+  letter-spacing: 0.02em;
+  transition: color 200ms ease;
+}
+
+.viewAll:hover {
+  color: var(--color-sienna);
+}
+
+@media (max-width: 1200px) {
+  .previewGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+@media (max-width: 768px) {
+  .preview {
+    padding: var(--section-padding-mobile) 24px;
   }
 
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  .previewGrid {
+    grid-template-columns: 1fr;
   }
 }
