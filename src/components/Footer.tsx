@@ -7,7 +7,7 @@ interface FooterProps {
 
 export default function Footer({ settings }: FooterProps) {
   const year = new Date().getFullYear()
-  const copyright = settings?.copyright ?? `© ${year} Zachary Kiernan`
+  const copyright = settings?.footerText ?? `© ${year} Zachary Kiernan`
   const socialLinks = settings?.socialLinks ?? []
 
   return (

@@ -6,7 +6,7 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ service }: ServiceCardProps) {
-  const number = String(service.order).padStart(2, '0')
+  const number = String(service.number).padStart(2, '0')
 
   return (
     <div className={styles.card}>

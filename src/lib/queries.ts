@@ -17,24 +17,25 @@ export interface Service {
   _id: string
   title: string
   description: string
-  order: number
+  number: number
 }
 
 export interface SiteSettings {
   heroImage?: SanityImageData
   tagline?: string
   socialLinks?: Array<{ platform: string; url: string }>
-  copyright?: string
+  footerText?: string
 }
 
 export interface AboutContent {
   headshot?: SanityImageData
   bio?: unknown[] // PortableText blocks
+  clientsHeading?: string
   clients?: string[]
 }
 
 export const workItemsQuery = `
-  *[_type == "workItem"] | order(order asc) {
+  *[_type == "galleryImage"] | order(order asc) {
     _id,
     title,
     client,
@@ -59,7 +60,7 @@ export const homepageQuery = `
       },
       tagline
     },
-    "recentWork": *[_type == "workItem"] | order(order asc)[0...4] {
+    "recentWork": *[_type == "galleryImage"] | order(order asc)[0...4] {
       _id,
       title,
       client,
@@ -75,7 +76,7 @@ export const homepageQuery = `
 
 export const aboutQuery = `
   {
-    "about": *[_type == "about"][0] {
+    "about": *[_type == "aboutPage"][0] {
       headshot {
         asset->,
         hotspot,
@@ -83,13 +84,14 @@ export const aboutQuery = `
         "lqip": asset->metadata.lqip
       },
       bio,
+      clientsHeading,
       clients
     },
-    "services": *[_type == "service"] | order(order asc) {
+    "services": *[_type == "service"] | order(number asc) {
       _id,
       title,
       description,
-      order
+      number
     }
   }
 `
@@ -100,6 +102,6 @@ export const siteSettingsQuery = `
       platform,
       url
     },
-    copyright
+    footerText
   }
 `
