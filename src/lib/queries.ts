@@ -35,7 +35,7 @@ export interface AboutContent {
 }
 
 export const workItemsQuery = `
-  *[_type == "galleryImage"] | order(order asc) {
+  *[_type == "galleryImage"] | order(orderRank asc) {
     _id,
     title,
     client,
