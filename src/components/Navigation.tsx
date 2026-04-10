@@ -1,15 +1,17 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import styles from './Navigation.module.css'
 
 interface NavigationProps {
   instagramUrl?: string
+  logoUrl?: string
 }
 
-export default function Navigation({ instagramUrl }: NavigationProps) {
+export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
   const pathname = usePathname()
   const isHomepage = pathname === '/'
   const [scrolled, setScrolled] = useState(false)
@@ -39,8 +41,15 @@ export default function Navigation({ instagramUrl }: NavigationProps) {
       className={`${styles.header} ${solid ? styles.solid : styles.transparent}`}
     >
       <div className={styles.inner}>
-        <Link href="/" className={styles.logo}>
-          Z. Kiernan
+        <Link href="/" className={styles.logo} aria-label="Zachary Kiernan — Home">
+          {logoUrl && (
+            <Image
+              src={logoUrl}
+              alt="Zachary Kiernan"
+              fill
+              sizes="250px"
+            />
+          )}
         </Link>
 
         <nav className={styles.nav}>

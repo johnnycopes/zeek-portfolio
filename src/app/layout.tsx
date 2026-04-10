@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { DM_Serif_Display, DM_Sans } from 'next/font/google'
 import { client } from '@/lib/sanity'
 import { siteSettingsQuery, type SiteSettings } from '@/lib/queries'
+import { urlFor } from '@/lib/image'
 import Navigation from '@/components/Navigation'
 import './globals.css'
 
@@ -36,13 +37,17 @@ export default async function RootLayout({
     (l) => l.platform === 'instagram'
   )?.url
 
+  const logoUrl = settings?.logo
+    ? urlFor(settings.logo).height(64).url()
+    : undefined
+
   return (
     <html
       lang="en"
       className={`${dmSerifDisplay.variable} ${dmSans.variable}`}
     >
       <body>
-        <Navigation instagramUrl={instagramUrl} />
+        <Navigation instagramUrl={instagramUrl} logoUrl={logoUrl} />
         {children}
       </body>
     </html>

@@ -21,6 +21,7 @@ export interface Service {
 }
 
 export interface SiteSettings {
+  logo?: SanityImageData
   heroImage?: SanityImageData
   tagline?: string
   socialLinks?: Array<{ platform: string; url: string }>
@@ -74,6 +75,10 @@ export const aboutQuery = `
 
 export const siteSettingsQuery = `
   *[_type == "siteSettings"][0] {
+    logo {
+      asset->,
+      "lqip": asset->metadata.lqip
+    },
     socialLinks[] {
       platform,
       url
