@@ -18,7 +18,7 @@ export default function GalleryImage({ item, onClick }: GalleryImageProps) {
           src={src}
           alt={item.title ?? 'Portfolio work by Zachary Kiernan'}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
           className={styles.image}
           placeholder={item.image.lqip ? 'blur' : 'empty'}
           blurDataURL={item.image.lqip}

@@ -2,21 +2,3 @@
   padding-top: 64px; /* nav height */
   cursor: none;
 }
-
-.inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--section-padding-desktop) 24px;
-}
-
-.heading {
-  font-size: 36px;
-  margin-bottom: 40px;
-  color: var(--color-bark);
-}
-
-@media (max-width: 768px) {
-  .inner {
-    padding: var(--section-padding-mobile) 24px;
-  }
-}

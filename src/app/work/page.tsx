@@ -16,10 +16,7 @@ export default async function WorkPage() {
   return (
     <main className={styles.main}>
       <CustomCursor variant="eye" />
-      <div className={styles.inner}>
-        <h1 className={styles.heading}>Work</h1>
-        <ImageGallery images={images} />
-      </div>
+      <ImageGallery images={images} />
     </main>
   )
 }
