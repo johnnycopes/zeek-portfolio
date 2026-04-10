@@ -6,12 +6,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import styles from './Navigation.module.css'
 
-interface NavigationProps {
-  instagramUrl?: string
-  logoUrl?: string
-}
+const INSTAGRAM_URL = 'https://www.instagram.com/zacharykiernan'
 
-export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
+export default function Navigation() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -33,14 +30,7 @@ export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo} aria-label="Zachary Kiernan — Home">
-          {logoUrl && (
-            <Image
-              src={logoUrl}
-              alt="Zachary Kiernan"
-              fill
-              sizes="250px"
-            />
-          )}
+          <Image src="/logo.jpg" alt="Zachary Kiernan" fill sizes="250px" />
         </Link>
 
         <nav className={styles.nav}>
@@ -50,11 +40,9 @@ export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
           <Link href="/about" className={pathname === '/about' ? styles.active : undefined}>
             About
           </Link>
-          {instagramUrl && (
-            <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
-          )}
           <Link
             href="/contact"
             className={pathname === '/contact' ? styles.active : undefined}
@@ -79,11 +67,9 @@ export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
         <nav className={styles.overlayNav}>
           <Link href="/work">Work</Link>
           <Link href="/about">About</Link>
-          {instagramUrl && (
-            <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
               Instagram
             </a>
-          )}
           <Link href="/contact">Contact</Link>
         </nav>
       </div>

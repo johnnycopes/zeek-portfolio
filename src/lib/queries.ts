@@ -18,11 +18,6 @@ export interface Service {
   number: number
 }
 
-export interface SiteSettings {
-  logo?: SanityImageData
-  socialLinks?: Array<{ platform: string; url: string }>
-}
-
 export interface AboutContent {
   headshot?: SanityImageData
   bio?: unknown[] // PortableText blocks
@@ -62,19 +57,6 @@ export const aboutQuery = `
       title,
       description,
       number
-    }
-  }
-`
-
-export const siteSettingsQuery = `
-  *[_type == "siteSettings"][0] {
-    logo {
-      asset->,
-      "lqip": asset->metadata.lqip
-    },
-    socialLinks[] {
-      platform,
-      url
     }
   }
 `
