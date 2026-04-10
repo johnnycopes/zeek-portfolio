@@ -4,15 +4,6 @@
   left: 0;
   right: 0;
   z-index: 100;
-  transition: background-color 300ms ease;
-}
-
-.transparent {
-  background-color: transparent;
-  color: var(--color-cream);
-}
-
-.solid {
   background-color: #ffffff;
   color: var(--color-bark);
 }

@@ -13,15 +13,7 @@ interface NavigationProps {
 
 export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
   const pathname = usePathname()
-  const isHomepage = pathname === '/'
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     setMenuOpen(false)
@@ -37,12 +29,8 @@ export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
     }
   }, [menuOpen])
 
-  const solid = !isHomepage || scrolled
-
   return (
-    <header
-      className={`${styles.header} ${solid ? styles.solid : styles.transparent}`}
-    >
+    <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo} aria-label="Zachary Kiernan — Home">
           {logoUrl && (
@@ -56,10 +44,10 @@ export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
         </Link>
 
         <nav className={styles.nav}>
-          <Link href="/work" className={pathname === '/work' ? styles.active : ''}>
+          <Link href="/work" className={pathname === '/work' ? styles.active : undefined}>
             Work
           </Link>
-          <Link href="/about" className={pathname === '/about' ? styles.active : ''}>
+          <Link href="/about" className={pathname === '/about' ? styles.active : undefined}>
             About
           </Link>
           {instagramUrl && (
@@ -69,7 +57,7 @@ export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
           )}
           <Link
             href="/contact"
-            className={pathname === '/contact' ? styles.active : ''}
+            className={pathname === '/contact' ? styles.active : undefined}
           >
             Contact
           </Link>

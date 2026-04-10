@@ -8,8 +8,6 @@ export interface SanityImageData {
 export interface WorkItem {
   _id: string
   title: string
-  client?: string
-  tags?: string[]
   image: SanityImageData
 }
 
@@ -22,10 +20,7 @@ export interface Service {
 
 export interface SiteSettings {
   logo?: SanityImageData
-  heroImage?: SanityImageData
-  tagline?: string
   socialLinks?: Array<{ platform: string; url: string }>
-  footerText?: string
 }
 
 export interface AboutContent {
@@ -39,8 +34,6 @@ export const workItemsQuery = `
   *[_type == "galleryImage"] | order(orderRank asc) {
     _id,
     title,
-    client,
-    tags,
     "image": image {
       asset->,
       hotspot,
@@ -82,7 +75,6 @@ export const siteSettingsQuery = `
     socialLinks[] {
       platform,
       url
-    },
-    footerText
+    }
   }
 `
