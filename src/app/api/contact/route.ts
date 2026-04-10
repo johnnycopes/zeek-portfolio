@@ -11,9 +11,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
   }
 
-  const { name, email, projectType, budget, message } = body
+  const { name, email, company, services, projectValue, fixedBudget, timeline, projectDetails } = body
 
-  if (!name || !email || !message) {
+  if (!name || !email || !projectDetails) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
@@ -23,13 +23,16 @@ export async function POST(request: Request) {
     from: 'Portfolio Contact <onboarding@resend.dev>',
     to,
     replyTo: email,
-    subject: `New inquiry from ${name}${projectType ? ` — ${projectType}` : ''}`,
+    subject: `New inquiry from ${name}`,
     text: [
       `Name: ${name}`,
+      company ? `Company: ${company}` : null,
       `Email: ${email}`,
-      projectType ? `Project Type: ${projectType}` : null,
-      budget ? `Budget: ${budget}` : null,
-      `\nMessage:\n${message}`,
+      services?.length ? `Services: ${services.join(', ')}` : null,
+      projectValue ? `Project Value: ${projectValue}` : null,
+      fixedBudget ? `Fixed Budget: ${fixedBudget}` : null,
+      timeline ? `Timeline: ${timeline}` : null,
+      `\nProject Details:\n${projectDetails}`,
     ]
       .filter(Boolean)
       .join('\n'),

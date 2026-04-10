@@ -17,12 +17,18 @@
   gap: 8px;
 }
 
-.field label {
+.field > label:first-child {
   font-size: 14px;
   font-weight: 500;
   color: var(--color-earth);
   letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--color-stone);
+  margin-top: -4px;
 }
 
 .field input,
@@ -48,6 +54,45 @@
   min-height: 140px;
 }
 
+.checkboxGroup {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 24px;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-bark);
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.checkboxItem input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: var(--color-sienna);
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .checkboxGroup {
+    grid-template-columns: 1fr;
+  }
+}
+
+.submitRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 .submit {
   padding: 14px 32px;
   background-color: var(--color-bark);
@@ -60,7 +105,7 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 200ms ease;
-  align-self: flex-start;
+  flex-shrink: 0;
 }
 
 .submit:hover:not(:disabled) {
@@ -72,12 +117,12 @@
   cursor: not-allowed;
 }
 
-.error {
-  color: var(--color-sienna);
+.validationMessage {
   font-size: 14px;
+  color: var(--color-sienna);
 }
 
-.error a {
+.validationMessage a {
   color: var(--color-sienna);
   text-decoration: underline;
 }
