@@ -71,7 +71,7 @@ export default function Lightbox({
       className={styles.overlay}
       role="dialog"
       aria-modal="true"
-      aria-label={`Image ${currentIndex + 1} of ${total}: ${current.title}`}
+      aria-label={`Image ${currentIndex + 1} of ${total}`}
       onClick={onClose}
     >
       <button
@@ -118,7 +118,6 @@ export default function Lightbox({
         aria-live="polite"
         onClick={(e) => e.stopPropagation()}
       >
-        <span className={styles.captionTitle}>{current.title}</span>
         <span className={styles.counter}>
           {currentIndex + 1} / {total}
         </span>

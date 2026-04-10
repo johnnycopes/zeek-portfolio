@@ -102,12 +102,6 @@
   white-space: nowrap;
 }
 
-.captionTitle {
-  font-family: var(--font-serif);
-  font-size: 18px;
-  color: var(--color-cream);
-}
-
 .counter {
   font-size: 14px;
   color: var(--color-stone);

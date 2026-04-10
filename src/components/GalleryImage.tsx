@@ -23,10 +23,6 @@ export default function GalleryImage({ item, onClick }: GalleryImageProps) {
           placeholder={item.image.lqip ? 'blur' : 'empty'}
           blurDataURL={item.image.lqip}
         />
-        <div className={styles.overlay}>
-          <p className={styles.title}>{item.title}</p>
-          {item.client && <p className={styles.client}>{item.client}</p>}
-        </div>
       </div>
     </button>
   )
