@@ -1,7 +1,6 @@
 import { client } from '@/lib/sanity'
 import { workItemsQuery, type WorkItem } from '@/lib/queries'
 import ImageGallery from '@/components/ImageGallery'
-import { CustomCursor } from '@/components/CustomCursor'
 import styles from './page.module.css'
 
 export const metadata = {
@@ -15,8 +14,7 @@ export default async function WorkPage() {
 
   return (
     <main className={styles.main}>
-      <CustomCursor variant="eye" />
-      <ImageGallery images={images} />
+<ImageGallery images={images} />
     </main>
   )
 }
