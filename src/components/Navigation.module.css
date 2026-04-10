@@ -64,6 +64,7 @@
   flex-direction: column;
   gap: 5px;
   padding: 4px;
+  color: inherit;
 }
 
 .bar {
@@ -81,6 +82,7 @@
 
 .hamburger .bar:nth-child(2).barOpen {
   opacity: 0;
+  transition: opacity 0ms;
 }
 
 .hamburger .bar:nth-child(3).barOpen {

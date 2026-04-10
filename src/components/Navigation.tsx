@@ -28,9 +28,12 @@ export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
   }, [pathname])
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    const val = menuOpen ? 'hidden' : ''
+    document.body.style.overflow = val
+    document.documentElement.style.overflow = val
     return () => {
       document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
     }
   }, [menuOpen])
 
