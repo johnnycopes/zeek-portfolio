@@ -163,6 +163,7 @@ export default function ContactForm() {
 
       <div className={styles.field}>
         <label htmlFor="projectValue">Project Value</label>
+        <p className={styles.hint}>If a budget or range is not already established, we will work with you to establish a value on what we create together. </p>
         <select id="projectValue" name="projectValue">
           <option value="">Not sure yet</option>
           <option value="≤ $10,000">≤ $10,000</option>
@@ -174,7 +175,7 @@ export default function ContactForm() {
 
       <div className={styles.field}>
         <label htmlFor="fixedBudget">Fixed Max Budget</label>
-        <p className={styles.hint}>If you have a fixed budget for the project, please let us know here.</p>
+        <p className={styles.hint}>If you have a fixed budget for the project, please let us know here. We provide small, medium and large branding packages. However, creative process can also be dictated by max budget cost.</p>
         <textarea
           id="fixedBudget"
           name="fixedBudget"
