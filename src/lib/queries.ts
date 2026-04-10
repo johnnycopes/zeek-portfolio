@@ -49,30 +49,6 @@ export const workItemsQuery = `
   }
 `
 
-export const homepageQuery = `
-  {
-    "settings": *[_type == "siteSettings"][0] {
-      heroImage {
-        asset->,
-        hotspot,
-        crop,
-        "lqip": asset->metadata.lqip
-      },
-      tagline
-    },
-    "recentWork": *[_type == "galleryImage"] | order(order asc)[0...4] {
-      _id,
-      title,
-      client,
-      "image": image {
-        asset->,
-        hotspot,
-        crop,
-        "lqip": asset->metadata.lqip
-      }
-    }
-  }
-`
 
 export const aboutQuery = `
   {
