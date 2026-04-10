@@ -3,7 +3,6 @@ import { DM_Serif_Display, DM_Sans } from 'next/font/google'
 import { client } from '@/lib/sanity'
 import { siteSettingsQuery, type SiteSettings } from '@/lib/queries'
 import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
 import './globals.css'
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -33,15 +32,18 @@ export default async function RootLayout({
     .fetch(siteSettingsQuery)
     .catch(() => null)
 
+  const instagramUrl = settings?.socialLinks?.find(
+    (l) => l.platform === 'instagram'
+  )?.url
+
   return (
     <html
       lang="en"
       className={`${dmSerifDisplay.variable} ${dmSans.variable}`}
     >
       <body>
-        <Navigation />
+        <Navigation instagramUrl={instagramUrl} />
         {children}
-        <Footer settings={settings} />
       </body>
     </html>
   )

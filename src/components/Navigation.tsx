@@ -5,7 +5,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import styles from './Navigation.module.css'
 
-export default function Navigation() {
+interface NavigationProps {
+  instagramUrl?: string
+}
+
+export default function Navigation({ instagramUrl }: NavigationProps) {
   const pathname = usePathname()
   const isHomepage = pathname === '/'
   const [scrolled, setScrolled] = useState(false)
@@ -46,6 +50,11 @@ export default function Navigation() {
           <Link href="/about" className={pathname === '/about' ? styles.active : ''}>
             About
           </Link>
+          {instagramUrl && (
+            <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          )}
           <Link
             href="/contact"
             className={pathname === '/contact' ? styles.active : ''}
@@ -71,6 +80,11 @@ export default function Navigation() {
           <nav className={styles.overlayNav}>
             <Link href="/work">Work</Link>
             <Link href="/about">About</Link>
+            {instagramUrl && (
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+                Instagram
+              </a>
+            )}
             <Link href="/contact">Contact</Link>
           </nav>
         </div>
