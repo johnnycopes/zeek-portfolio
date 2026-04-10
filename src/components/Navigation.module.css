@@ -18,6 +18,8 @@
 }
 
 .inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 24px;
@@ -69,20 +71,39 @@
   width: 24px;
   height: 2px;
   background-color: currentColor;
-  transition:
-    transform 200ms ease,
-    opacity 200ms ease;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+/* Morph into × when open */
+.hamburger .bar:nth-child(1).barOpen {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger .bar:nth-child(2).barOpen {
+  opacity: 0;
+}
+
+.hamburger .bar:nth-child(3).barOpen {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Mobile overlay */
 .overlay {
   position: fixed;
   inset: 0;
-  background-color: var(--color-bark);
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99;
+  z-index: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 150ms ease, visibility 150ms ease;
+}
+
+.overlayOpen {
+  opacity: 1;
+  visibility: visible;
 }
 
 .overlayNav {
@@ -93,9 +114,10 @@
 }
 
 .overlayNav a {
-  font-family: var(--font-serif);
-  font-size: 36px;
-  color: var(--color-cream);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-bark);
   transition: color 200ms ease;
 }
 

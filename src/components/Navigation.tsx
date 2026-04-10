@@ -84,20 +84,18 @@ export default function Navigation({ instagramUrl, logoUrl }: NavigationProps) {
         </button>
       </div>
 
-      {menuOpen && (
-        <div className={styles.overlay}>
-          <nav className={styles.overlayNav}>
-            <Link href="/work">Work</Link>
-            <Link href="/about">About</Link>
-            {instagramUrl && (
-              <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
-                Instagram
-              </a>
-            )}
-            <Link href="/contact">Contact</Link>
-          </nav>
-        </div>
-      )}
+      <div className={`${styles.overlay} ${menuOpen ? styles.overlayOpen : ''}`}>
+        <nav className={styles.overlayNav}>
+          <Link href="/work">Work</Link>
+          <Link href="/about">About</Link>
+          {instagramUrl && (
+            <a href={instagramUrl} target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          )}
+          <Link href="/contact">Contact</Link>
+        </nav>
+      </div>
     </header>
   )
 }
